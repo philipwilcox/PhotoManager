@@ -15,9 +15,15 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+    @ObservedObject var libraryViewModel: LibraryViewModel
 
     var body: some View {
         NavigationView {
+            HStack {
+                Text("Num photos: ")
+                TextField("NumPhotos", value: $libraryViewModel.numPhotos, formatter: NumberFormatter())
+            }
             List {
                 ForEach(items) { item in
                     NavigationLink {
@@ -83,6 +89,8 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView(
+            libraryViewModel: LibraryViewModel(context: PersistenceController.preview.container.viewContext, fake: true)
+        ).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

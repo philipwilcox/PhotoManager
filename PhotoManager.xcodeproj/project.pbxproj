@@ -16,6 +16,7 @@
 		E9907EFB2A917467008D2C21 /* PhotoManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9907EFA2A917467008D2C21 /* PhotoManagerTests.swift */; };
 		E9907F052A917467008D2C21 /* PhotoManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9907F042A917467008D2C21 /* PhotoManagerUITests.swift */; };
 		E9907F072A917467008D2C21 /* PhotoManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9907F062A917467008D2C21 /* PhotoManagerUITestsLaunchTests.swift */; };
+		E9907F142A9174D2008D2C21 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9907F132A9174D2008D2C21 /* LibraryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		E9907F002A917467008D2C21 /* PhotoManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9907F042A917467008D2C21 /* PhotoManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManagerUITests.swift; sourceTree = "<group>"; };
 		E9907F062A917467008D2C21 /* PhotoManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E9907F132A9174D2008D2C21 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				E9907EED2A917467008D2C21 /* Persistence.swift */,
 				E9907EEF2A917467008D2C21 /* PhotoManager.xcdatamodeld */,
 				E9907EEA2A917467008D2C21 /* Preview Content */,
+				E9907F132A9174D2008D2C21 /* LibraryViewModel.swift */,
 			);
 			path = PhotoManager;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				E9907EEE2A917467008D2C21 /* Persistence.swift in Sources */,
 				E9907EE72A917466008D2C21 /* ContentView.swift in Sources */,
 				E9907EF12A917467008D2C21 /* PhotoManager.xcdatamodeld in Sources */,
+				E9907F142A9174D2008D2C21 /* LibraryViewModel.swift in Sources */,
 				E9907EE52A917466008D2C21 /* PhotoManagerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

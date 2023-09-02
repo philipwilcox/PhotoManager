@@ -13,7 +13,9 @@ struct PhotoManagerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                libraryViewModel: LibraryViewModel(context: PersistenceController.preview.container.viewContext, fake: false)
+                )
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

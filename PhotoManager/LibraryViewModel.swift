@@ -55,11 +55,16 @@ class LibraryViewModel: NSObject, ObservableObject, PHPhotoLibraryChangeObserver
 //                self.self.photoInfoMap[asset.localIdentifier] = PhotoInfo(
                 self.photoInfoList.append(PhotoInfo(
                     id: asset.localIdentifier,
-//                    localIdentifier: asset.localIdentifier,
+                    asset: asset,
                     bytesOnDisk: sizeOnDisk!,
-                    humanReadableSizeOnDisk: self.convertByteToHumanReadable(sizeOnDisk!)))
+                    humanReadableSizeOnDisk: self.convertByteToHumanReadable(sizeOnDisk!),
+                    filename: resources[0].originalFilename
+              ))
             })
-            // TODO: sort the list by size and also show thumbnails
+            photoInfoList.sort(by: {(a: PhotoInfo, b: PhotoInfo) -> Bool in
+                return a.bytesOnDisk > b.bytesOnDisk
+            })
+            // TODO: and also show thumbnails
         }
         else {
             numPhotos = 5

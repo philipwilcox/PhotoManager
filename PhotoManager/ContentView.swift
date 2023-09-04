@@ -7,6 +7,24 @@
 
 import SwiftUI
 import CoreData
+import Photos
+import PhotosUI
+
+struct PhotoThumbnailView: View {
+    
+    @Binding var asset: PHAsset
+    var imageManager: PHCachingImageManager
+    
+    var body: some View {
+        // TODO: make thumbnail size dynamic
+        let thumbnailSize = CGSize(width: 200, height: 200)
+        var image: UIImage?
+        var _ = imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: { resultImage, _ in
+            image = resultImage!
+        })
+        Image(uiImage: image!)
+    }
+}
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -17,6 +35,8 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
     
     @ObservedObject var libraryViewModel: LibraryViewModel
+    
+    fileprivate let imageManager = PHCachingImageManager()
 
     var body: some View {
         NavigationView {
@@ -26,10 +46,15 @@ struct ContentView: View {
                     TextField("NumPhotos", value: $libraryViewModel.numPhotos, formatter: NumberFormatter())
                 }
                 List {
+                    // TODO: paginate these lists
                     ForEach($libraryViewModel.photoInfoList) { item in
                         // TODO: why is the size a binding?
-                        let formatted = "Photo \(item.id) - \(item.humanReadableSizeOnDisk.wrappedValue)"
-                        Text(formatted)
+                        let formatted = "Photo \(item.filename.wrappedValue) - \(item.humanReadableSizeOnDisk.wrappedValue)"
+                        HStack {
+                            Text(formatted)
+                            // TODO: figure out bindings here
+                            PhotoThumbnailView(asset: item.asset, imageManager: imageManager)
+                        }
                     }
                 }
             }
